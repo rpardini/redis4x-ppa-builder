@@ -33,6 +33,6 @@ fi
 # Run the Launchpad utility image, it will upload to Launchpad via dput.
 if [[ ${LAUNCHPAD} -gt 0 ]]; then
   echo "Uploading to Launchpad..."
-  docker run -it -v ${PWD}/exfiltrated/sourcepkg/:/to_upload adoptopenjdk/launchpad:latest
+  docker run -it -v ${PWD}/exfiltrated/sourcepkg/:/to_upload redis4x/launchpad:latest
   # This is the final stop for Launchpad. Watch it build the source packages there!
 fi

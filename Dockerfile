@@ -35,7 +35,9 @@ RUN ls -la
 ##    it uses alpine:3.8 because that's light enough, and already downloaded for node:10-alpine
 FROM alpine:3.8
 
-COPY --from=ubuntuBuilder /opt/redis4ppa/build/* /sourcepkg/
+COPY --from=ubuntuBuilder /opt/redis4ppa/build/*_source* /sourcepkg/
+COPY --from=ubuntuBuilder /opt/redis4ppa/build/*.dsc /sourcepkg/
+COPY --from=ubuntuBuilder /opt/redis4ppa/build/*debian.tar.xz /sourcepkg/
 
 # Hack: use volumes to "exfiltrate" the source files back to the host machine.
 # This is just a marker directory to avoid mistakes when mounting volumes.

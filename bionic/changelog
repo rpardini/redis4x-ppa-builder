@@ -1,4 +1,4 @@
-redis (5:4.0.11-4rp1~bionic1) bionic; urgency=high
+redis (5:4.0.11-5rp1~bionic1) bionic; urgency=high
 
   * Rebuilt. Resigned. Exactly the same as 5:4.0.11-1chl1~xenial1 from Chris Lea.
   * Rebuilt for bionic

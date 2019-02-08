@@ -1,4 +1,4 @@
-redis (5:4.0.11-4rp1~xenial1) xenial; urgency=high
+redis (5:4.0.11-5rp1~xenial1) xenial; urgency=high
 
   * Rebuilt. Resigned. Exactly the same as 5:4.0.11-1chl1~xenial1 from Chris Lea.
 
@@ -40,7 +40,7 @@ redis (5:4.0.10-1chl1~xenial1) xenial; urgency=high
 
 redis (5:4.0.9-1chl1~xenial1) xenial; urgency=low
 
-  * Bump leading semver major to keep in sync with upstream. 
+  * Bump leading semver major to keep in sync with upstream.
 
  -- Chris Lea <chris.lea@gmail.com>  Tue, 27 Mar 2018 13:31:08 -0700
 
@@ -64,7 +64,7 @@ redis (4:4.0.9-1chl1~xenial1) xenial; urgency=medium
 
 redis (4:4.0.8-1chl1~xenial1) xenial; urgency=medium
 
-  * Critical update for redis cluster users. 
+  * Critical update for redis cluster users.
 
  -- Chris Lea <chris.lea@gmail.com>  Sat, 03 Feb 2018 21:19:21 -0800
 
@@ -100,43 +100,43 @@ redis (4:4.0.7-1chl1~xenial1) xenial; urgency=medium
 redis (4:4.0.6-1chl1~xenial1) xenial; urgency=high
 
   * CRITICAL fixes. More errors in the fixes for PSYNC2 in Redis 4.0.5
-    were identified. 
+    were identified.
 
  -- Chris Lea <chris.lea@gmail.com>  Mon, 04 Dec 2017 09:30:03 -0800
 
 redis (4:4.0.5-1chl1~xenial1) xenial; urgency=low
 
-  * New upstream release. 
+  * New upstream release.
 
  -- Chris Lea <chris.lea@gmail.com>  Fri, 01 Dec 2017 22:25:44 -0800
 
 redis (4:4.0.2-2chl1~xenial1) xenial; urgency=low
 
-  * Don't compress any .rb or .c files. 
+  * Don't compress any .rb or .c files.
 
  -- Chris Lea <chris.lea@gmail.com>  Mon, 25 Sep 2017 22:57:36 -0700
 
 redis (4:4.0.2-1chl1~xenial1) xenial; urgency=low
 
-  * New upstream release. 
+  * New upstream release.
 
  -- Chris Lea <chris.lea@gmail.com>  Mon, 25 Sep 2017 22:39:08 -0700
 
 redis (4:4.0.1-4chl1~xenial1) xenial; urgency=medium
 
-  * Actually don't run tests. 
+  * Actually don't run tests.
 
  -- Chris Lea <chris.lea@gmail.com>  Tue, 01 Aug 2017 10:16:07 -0700
 
 redis (4:4.0.1-3chl1~xenial1) xenial; urgency=low
 
-  * Fix some dependencies, don't run tests. 
+  * Fix some dependencies, don't run tests.
 
  -- Chris Lea <chris.lea@gmail.com>  Tue, 01 Aug 2017 09:50:21 -0700
 
 redis (4:4.0.1-2chl1~xenial1) xenial; urgency=low
 
-  * Backport to xenial. 
+  * Backport to xenial.
 
  -- Chris Lea <chris.lea@gmail.com>  Mon, 31 Jul 2017 16:18:12 -0700
 
@@ -533,7 +533,7 @@ redis (2:3.0.4-7) unstable; urgency=medium
 
   * Change the default (and commented-out) value for "unixsocket" from
     /tmp/redis.sock -> /var/run/redis/redis.sock so that it will work even
-    under systemd's PrivateTmp=True. Thanks to 
+    under systemd's PrivateTmp=True. Thanks to
     Chris <Fisch.666@gmx.de> (Closes: #801464)
 
  -- Chris Lamb <lamby@debian.org>  Sat, 10 Oct 2015 21:11:57 +0200
