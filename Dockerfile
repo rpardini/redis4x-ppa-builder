@@ -4,11 +4,12 @@ RUN apt-get update
 RUN apt-get -y --no-install-recommends install devscripts build-essential lintian debhelper fakeroot lsb-release figlet dh-systemd tcl procps
 
 # Add the modified/debianized source and the originals
-ADD redis-src /opt/redis4ppa/build/redis-4.0.11
+ADD redis-src /opt/redis4ppa/build/sources
 COPY redis-targz/redis_4.0.11.orig.tar.gz /opt/redis4ppa/build/
 
 # Do a binary build (for sanity reasons)
-WORKDIR /opt/redis4ppa/build/redis-4.0.11
+WORKDIR /opt/redis4ppa/build/sources
+ADD changelog/xenial /opt/redis4ppa/build/sources/debian/changelog
 RUN debuild -us -uc
 
 # List contents
@@ -17,12 +18,13 @@ RUN ls -la
 
 # Do a source build, for Launchpad...
 # source-only build, no signing.
-# this is for xenial
-WORKDIR /opt/redis4ppa/build/redis-4.0.11
+# this is for xenial's changelog
+WORKDIR /opt/redis4ppa/build/sources
+ADD changelog/xenial /opt/redis4ppa/build/sources/debian/changelog
 RUN debuild -S -us -uc
 
 # Replace changelog with the one for bionic and rebuild source
-ADD bionic/changelog /opt/redis4ppa/build/redis-4.0.11/debian/changelog
+ADD changelog/bionic /opt/redis4ppa/build/sources/debian/changelog
 RUN debuild -S -us -uc
 
 # List contents

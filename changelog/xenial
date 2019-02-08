@@ -1,8 +1,8 @@
-redis (5:4.0.11-5rp1~xenial1) xenial; urgency=high
+redis (5:4.0.11-6rp1~xenial1) xenial; urgency=high
 
   * Rebuilt. Resigned. Exactly the same as 5:4.0.11-1chl1~xenial1 from Chris Lea.
 
- -- Ricardo Pardini (Pardini Yubi 2017) <ricardo@pardini.net>  Thu, 15 Nov 2018 11:56:35 +0100
+ -- Ricardo Pardini (Pardini Yubi 2017) <ricardo@pardini.net>  Fri, 8 Feb 2019 17:40:35 +0100
 
 redis (5:4.0.11-1chl1~xenial1) xenial; urgency=high
 
