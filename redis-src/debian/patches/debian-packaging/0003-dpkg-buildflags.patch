@@ -1,0 +1,36 @@
+diff -urN redis-4.0.1.orig/deps/hiredis/Makefile redis-4.0.1/deps/hiredis/Makefile
+--- redis-4.0.1.orig/deps/hiredis/Makefile	2017-07-24 06:58:34.000000000 -0700
++++ redis-4.0.1/deps/hiredis/Makefile	2017-07-31 16:21:51.530273155 -0700
+@@ -41,7 +41,7 @@
+ OPTIMIZATION?=-O3
+ WARNINGS=-Wall -W -Wstrict-prototypes -Wwrite-strings
+ DEBUG_FLAGS?= -g -ggdb
+-REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CFLAGS) $(WARNINGS) $(DEBUG_FLAGS) $(ARCH)
++REAL_CFLAGS=$(OPTIMIZATION) -fPIC $(CFLAGS) $(WARNINGS) $(DEBUG_FLAGS) $(ARCH) $(CPPFLAGS)
+ REAL_LDFLAGS=$(LDFLAGS) $(ARCH)
+ 
+ DYLIBSUFFIX=so
+diff -urN redis-4.0.1.orig/deps/linenoise/Makefile redis-4.0.1/deps/linenoise/Makefile
+--- redis-4.0.1.orig/deps/linenoise/Makefile	2017-07-24 06:58:34.000000000 -0700
++++ redis-4.0.1/deps/linenoise/Makefile	2017-07-31 16:22:05.138179817 -0700
+@@ -6,7 +6,7 @@
+ R_LDFLAGS= $(LDFLAGS)
+ DEBUG= -g
+ 
+-R_CC=$(CC) $(R_CFLAGS)
++R_CC=$(CC) $(R_CFLAGS) $(CPPFLAGS)
+ R_LD=$(CC) $(R_LDFLAGS)
+ 
+ linenoise.o: linenoise.h linenoise.c
+diff -urN redis-4.0.1.orig/src/Makefile redis-4.0.1/src/Makefile
+--- redis-4.0.1.orig/src/Makefile	2017-07-31 16:19:11.507502085 -0700
++++ redis-4.0.1/src/Makefile	2017-07-31 16:22:28.746021530 -0700
+@@ -125,7 +125,7 @@
+ 	FINAL_LIBS+= ../deps/jemalloc/lib/libjemalloc.a
+ endif
+ 
+-REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS)
++REDIS_CC=$(QUIET_CC)$(CC) $(FINAL_CFLAGS) $(CPPFLAGS)
+ REDIS_LD=$(QUIET_LINK)$(CC) $(FINAL_LDFLAGS)
+ REDIS_INSTALL=$(QUIET_INSTALL)$(INSTALL)
+ 

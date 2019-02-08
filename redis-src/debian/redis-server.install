@@ -1,0 +1,2 @@
+debian/redis-server.service /lib/systemd/system
+debian/redis.conf	/etc/redis

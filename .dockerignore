@@ -1,0 +1,10 @@
+.git
+.idea
+Dockerfile
+.dockerignore
+.gitignore
+presign
+to_sign
+postsign
+osx
+exfiltrated

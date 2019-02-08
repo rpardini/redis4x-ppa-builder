@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/buildflags.mk
+
+#DEB_BUILD_OPTIONS="nocheck"
+#export DEB_BUILD_OPTIONS
+
+export CFLAGS CPPFLAGS LDFLAGS
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_LDFLAGS_MAINT_APPEND = -ldl -latomic
+
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+	MAKEFLAGS += -j$(NUMJOBS)
+	export MAKEFLAGS
+endif
+
+ifneq (,$(filter $(shell dpkg-architecture -qDEB_HOST_ARCH),armel hurd-i386 kfreebsd-amd64 kfreebsd-i386 s390 sparc))
+export FORCE_LIBC_MALLOC = yes
+endif
+
+%:
+	dh $@ --with systemd
+
+override_dh_auto_install:
+	debian/bin/generate-parts
+
+override_dh_auto_build:
+	dh_auto_build --parallel -- V=1
+
+override_dh_auto_test:
+#ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+#	# Avoid race conditions in upstream testsuite. (#830500)
+#	taskset --cpu-list 0 ./runtest
+#	taskset --cpu-list 0 ./runtest-sentinel
+#endif
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f src/release.h
+
+override_dh_compress:
+	dh_compress -X.rb -X.c
+
+override_dh_installchangelogs:
+	dh_installchangelogs --keep 00-RELEASENOTES
